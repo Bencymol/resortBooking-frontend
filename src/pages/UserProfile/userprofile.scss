@@ -1,0 +1,80 @@
+:root {
+  --PrimaryColor: hsl(26, 93%, 50%);
+  --HoverColor: hsl(26, 90%, 42%);
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(0, 0%, 18%);
+  --textColor: hsl(240, 1%, 48%);
+  --whiteColoreDeam: hsl(0, 0%, 93%);
+  --greyBg: hsl(0, 0%, 96%);
+  --greyText: rgb(199, 190, 190);
+  --inputColor: hsl(330, 12%, 97%);
+  /* box-shadow: 0 2px 8px 2px rgba(178,178,178,0.45); */
+}
+
+.userProfile {
+  height: 100vh;
+
+  width: 100vw;
+  .nav-div {
+    background: var(--blackColor);
+    height: 80px;
+  }
+  .profileContainer {
+    .greet {
+      height: 150px;
+      width: 100%;
+      background: var(--inputColor);
+      padding: 2.5rem;
+      font-size: 25px;
+      gap: 20px;
+      position: relative;
+      .btnDiv {
+        position: absolute;
+        top: 35%;
+        left: 80%;
+      }
+    }
+    .mainContent {
+      gap: 1rem;
+      padding: 2rem;
+      width: 100%;
+
+      .singleCard {
+        border-radius: 1rem;
+        width: 100%;
+        overflow: hidden;
+        padding: 0.5rem;
+        box-shadow: 0 2px 8px 2px rgba(178, 178, 178, 0.189);
+        h5 {
+          font-weight: 500;
+          padding: 0.4rem;
+          color: var(--textColor);
+          margin-top: 3px;
+        }
+        .cardBody {
+          padding: 0.6rem;
+          h4 {
+            color: var(--blackColor);
+            font-weight: 700;
+            font-size: 1rem;
+          }
+
+          .btn {
+            margin-top: 1rem;
+            width: 50%;
+            text-align: center;
+            justify-content: center;
+            padding: 0.5rem;
+            color: var(--whiteColor);
+            font-weight: 600;
+            gap: 0.4rem;
+
+            .icon {
+              color: var(--whiteColor);
+            }
+          }
+        }
+      }
+    }
+  }
+}

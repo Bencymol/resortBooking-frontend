@@ -1,6 +1,7 @@
 :root {
   --PrimaryColor: hsl(26, 93%, 50%);
   --HoverColor: hsl(26, 90%, 42%);
+  --disabledColor: hsl(26, 64%, 52%);
   --whiteColor: hsl(0, 0%, 100%);
   --blackColor: hsl(0, 0%, 18%);
   --textColor: hsl(240, 1%, 48%);
@@ -20,6 +21,14 @@
     width: 100%;
     padding: 1rem;
     z-index: 1000;
+    .userIcon {
+      margin-left: 4px;
+      .userText {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--whiteColor);
+      }
+    }
 
     .logoDiv {
       .logo {
@@ -81,6 +90,11 @@
                 }
               }
             }
+            .btn:disabled {
+              /* Your disabled styles here */
+              opacity: 0.5; /* Example: Reduce opacity when disabled */
+              cursor: not-allowed; /* Example: Change cursor to not-allowed */
+            }
 
             .loginBtn {
               background: none;
@@ -94,6 +108,22 @@
                 a {
                   color: var(--whiteColor);
                 }
+              }
+            }
+            .profileBtns {
+              background: var(--PrimaryColor) !important;
+              //border: 1px solid var(--PrimaryColor);
+              border-radius: 50% !important;
+              padding: 9px 18px;
+              border: none;
+              //padding: 0.4rem 1.5rem;
+              background-color: var(--PrimaryColor);
+              border: none;
+              outline: none;
+
+              cursor: pointer;
+              &:hover {
+                color: var(--PrimaryColor);
               }
             }
           }
@@ -130,6 +160,11 @@
     background: var(--blackColor);
     box-shadow: 0 2px 8px 2px rgba(178, 178, 178, 0.45);
   }
+
+  // #signupBtn:disabled {
+  //   background: var(--disabledColor); /* Change color when disabled */
+  //   cursor: not-allowed; /* Change cursor when disabled */
+  // }
 }
 
 /*Media query...*/

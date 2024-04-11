@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import "./home.scss";
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <section className="home">
       <div className="secContainer container">
@@ -10,7 +12,12 @@ const Home = () => {
             Elevate your senses, indulge in serenity, and let the rhythm of
             nature be the soundtrack to your retreat.
           </p>
-          <button className="btn">
+          <button
+            className="btn"
+            onClick={() => {
+              navigate("/resort-list");
+            }}
+          >
             <a href="#">Explore Now</a>
           </button>
         </div>

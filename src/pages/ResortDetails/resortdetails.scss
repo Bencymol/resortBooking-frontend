@@ -1,0 +1,150 @@
+/* colors*/
+
+:root {
+  --PrimaryColor: hsl(26, 93%, 50%);
+  --HoverColor: hsl(26, 90%, 42%);
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(0, 0%, 18%);
+  --textColor: hsl(240, 1%, 48%);
+  --whiteColoreDeam: hsl(0, 0%, 93%);
+  --greyBg: hsl(0, 0%, 96%);
+  --greyText: rgb(199, 190, 190);
+  --inputColor: hsl(330, 12%, 97%);
+  /* box-shadow: 0 2px 8px 2px rgba(178,178,178,0.45); */
+}
+
+.resort-details {
+  height: 100vh;
+  width: 100vw;
+  .nav-div {
+    background: var(--blackColor);
+    height: 80px;
+  }
+  .image-div {
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(
+        rgba(33, 33, 33, 0.522),
+        rgba(33, 33, 33, 0.522)
+      ),
+      url("../../assets/blog_bg.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    .homeText {
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      .title {
+        color: var(--whiteColor);
+        font-size: 2.5rem;
+        font-weight: 700;
+        line-height: 2.5rem;
+        text-align: center;
+      }
+      .subTitle {
+        color: var(--whiteColor);
+        opacity: 0.9;
+        font-size: 13px;
+        font-weight: 300;
+        padding: 1rem 0;
+        text-align: center;
+        margin: auto;
+      }
+    }
+  }
+  .aminityListDiv {
+    padding: 2rem 0;
+    gap: 1rem;
+    margin: 3% 0% 8% 10%;
+    // display: flex;
+    // flex-direction: column;
+    /* grid-template-columns: repeat(4, 1fr); */
+    .singleDestination {
+      border-radius: 1rem;
+      box-shadow: 0 2px 8px 2px rgba(178, 178, 178, 0.45);
+      padding: 0.5rem;
+      width: 50%;
+      margin-bottom: 20px;
+      .destImage {
+        height: 250px;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        border-radius: 1rem;
+        margin-top: 5px;
+        margin-bottom: 8px;
+
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: fill;
+          border-radius: 1rem;
+        }
+      }
+
+      .grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        .roomFacilities {
+          display: flex;
+          flex-wrap: wrap;
+
+          padding: 0.5rem;
+          .smicon {
+            padding: 0.3rem;
+            background: var(--blackColor);
+            font-size: 1.5rem;
+            border-radius: 50%;
+            color: var(--whiteColor);
+            border: 1px solid transparent;
+          }
+        }
+      }
+
+      p {
+        padding: 0.4rem;
+      }
+      .location {
+        font-weight: 600;
+        color: var(--blackColor);
+        padding: 2px;
+      }
+      .locIcon {
+        padding: 0.1rem;
+        background: var(--PrimaryColor);
+        font-size: 2rem;
+        border-radius: 50%;
+        color: var(--whiteColor);
+        border: 1px solid transparent;
+        margin-right: 3px;
+      }
+      .icon {
+        padding: 0.3rem;
+        background: var(--PrimaryColor);
+        font-size: 2.1rem;
+        border-radius: 50%;
+        color: var(--whiteColor);
+        border: 1px solid transparent;
+
+        &:hover {
+          background: var(--blackColor);
+          border: 1px solid var(--PrimaryColor);
+          color: var(--PrimaryColor);
+        }
+      }
+      &:hover {
+        border: 1px solid var(--PrimaryColor);
+      }
+
+      .btn {
+        color: var(--whiteColor);
+      }
+    }
+  }
+}

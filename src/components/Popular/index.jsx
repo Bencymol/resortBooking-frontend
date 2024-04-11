@@ -72,7 +72,7 @@ const Popular = () => {
                       <span className="dot">
                         <BsDot className="icon" />
                       </span>
-                      Dot
+                      RiverRover
                     </span>
                   </div>
                 </div>
