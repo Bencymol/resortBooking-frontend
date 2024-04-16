@@ -4,10 +4,10 @@ import { MdOutlineClose } from "react-icons/md";
 import "./popupform.scss";
 
 const PopupForm = ({ open, onClose, onSubmit, active }) => {
-  const [fromDate, setFromDate] = useState(null);
-  const [toDate, setToDate] = useState(null);
-  const [adult, setAdult] = useState(null);
-  const [kid, setKid] = useState(null);
+  const [fromDate, setFromDate] = useState("");
+  const [toDate, setToDate] = useState("");
+  const [adult, setAdult] = useState(0);
+  const [kid, setKid] = useState(0);
   const [today, setToday] = useState(new Date());
 
   const handleChange = event => {
@@ -89,7 +89,7 @@ const PopupForm = ({ open, onClose, onSubmit, active }) => {
               type="number"
               name="adult"
               min="0"
-              value={adult || ""}
+              value={adult || 0}
               onChange={handleChange}
               required
             />
@@ -101,9 +101,8 @@ const PopupForm = ({ open, onClose, onSubmit, active }) => {
               type="number"
               name="kid"
               min="0"
-              value={kid || ""}
+              value={kid || 0}
               onChange={handleChange}
-              required
             />
           </div>
 

@@ -6,6 +6,8 @@ import { BsArrowLeftShort } from "react-icons/bs";
 import { BsArrowRightShort, BsHouseFill } from "react-icons/bs";
 import { MdBathtub, MdBed } from "react-icons/md";
 import { FaRupeeSign } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { setResortBookingData } from "../../redux/bookingSlice";
 
 import { toast, ToastContainer } from "react-toastify";
 
@@ -70,13 +72,17 @@ const ResortDetails = () => {
     setOpen(false);
   };
 
+  const dispatch = useDispatch();
+  const resortBooking = useSelector(state => state.bookingRD.resortBookingData);
+
   const handleSubmit = async data => {
     if (localStorage.getItem("id")) {
       const user = localStorage.getItem("id");
       const resort = id;
-      setBookingData({ ...bookingData, ...data, resort, user });
+      // setBookingData({ ...bookingData, ...data, resort, user });
+      dispatch(setResortBookingData({ ...bookingData, ...data, resort, user }));
       try {
-        const bookingResponse = await axios.post("/book", bookingData);
+        const bookingResponse = await axios.post("/book", resortBooking);
 
         toast.info(bookingResponse.data.message);
       } catch (e) {

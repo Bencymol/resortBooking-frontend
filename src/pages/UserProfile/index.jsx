@@ -15,21 +15,20 @@ import { useNavigate } from "react-router-dom";
 const UserProfile = () => {
   const [bookings, setBookings] = useState([]);
   const navigate = useNavigate();
-  // const [resort, setResort] = useState([]);
+
   const id = localStorage.getItem("id");
+
   const fetchUserBookings = async () => {
     const response = await axios.get(`user/bookings/${id}`);
     setBookings(response.data);
-    console.log(bookings);
-    /*const resortIds = bookings.map(item => {
-        return item.resort;
-      });
-    const resortDetails = await axios.get(`user/resort/${bookings.resort}`);*/
   };
-  const date = Date.now();
+
+  const [date, setDate] = useState(new Date().toISOString().substring(0, 10));
   useEffect(() => {
+    setDate(new Date().toISOString().substring(0, 10));
     fetchUserBookings();
   }, []);
+
   return (
     <div className="userProfile">
       <div className="nav-div">
@@ -76,7 +75,7 @@ const UserProfile = () => {
                       {item.toDate}, {item.chekOut}
                     </h5>
                   </div>
-                  {date > item.chekIn && (
+                  {date && date > item.fromDate && (
                     <button className=" btn flex">
                       Cancel Booking
                       <BsArrowRightShort className="icon" />
