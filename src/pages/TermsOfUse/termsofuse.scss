@@ -1,0 +1,76 @@
+/* colors*/
+
+:root {
+  --PrimaryColor: hsl(26, 93%, 50%);
+  --HoverColor: hsl(26, 90%, 42%);
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(0, 0%, 18%);
+  --textColor: hsl(240, 1%, 48%);
+  --whiteColoreDeam: hsl(0, 0%, 93%);
+  --greyBg: hsl(0, 0%, 96%);
+  --greyText: rgb(199, 190, 190);
+  --inputColor: hsl(330, 12%, 97%);
+  /* box-shadow: 0 2px 8px 2px rgba(178,178,178,0.45); */
+}
+.termsofUse {
+  height: 100vh;
+  width: 100vw;
+
+  .nav-div {
+    background: var(--blackColor);
+    height: 80px;
+  }
+  .termsDiv {
+    margin-left: 5%;
+    margin-top: 5%;
+    .termsHead {
+      color: var(--blackColor);
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 5rem;
+      h3 {
+        color: var(--blackColor);
+        line-height: 4rem;
+        font-weight: 500;
+      }
+      h5 {
+        color: var(--blackColor);
+        line-height: 3rem;
+        font-weight: 300;
+        font-size: 1.2rem;
+      }
+    }
+    .contents {
+      ul {
+        list-style-type: none;
+        padding-left: 0;
+      }
+
+      ul li:before {
+        content: "\2022"; /* Unicode character for filled circle */
+        color: var(--blackColor); /* Color of the filled circle */
+        display: inline-block;
+        width: 1rem; /* Adjust as needed */
+        margin-left: -1em; /* Adjust as needed */
+        margin-top: 10px;
+        line-height: 1.5rem;
+      }
+      h4 {
+        font-size: 1.4rem;
+        color: var(--blackColor);
+        line-height: 5rem;
+        font-weight: 600;
+      }
+      .copy {
+        margin-left: 5%;
+      }
+      .copy-agent {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        margin-top: 30px;
+        margin-bottom: 40px;
+      }
+    }
+  }
+}

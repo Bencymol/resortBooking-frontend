@@ -81,6 +81,9 @@
       &:hover {
         border: 1px solid var(--PrimaryColor);
       }
+      .moreBtn {
+        color: var(--whiteColor);
+      }
     }
   }
 }

@@ -11,10 +11,14 @@ const HomePage = () => {
     <>
       <Navbar />
       <Home />
-      <Popular />
+      <section id="popular">
+        <Popular />
+      </section>
       <Offers />
       <About />
-      <Footer />
+      <section id="footer">
+        <Footer />
+      </section>
     </>
   );
 };

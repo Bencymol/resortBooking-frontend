@@ -23,7 +23,8 @@ const Login = () => {
       if (localStorage.getItem("role") == "USER") {
         navigate("/user/home");
       } else {
-        // navigate("/admin/home");
+        console.log("Admin");
+        navigate("/admin-home");
       }
     } catch (e) {
       toast.error(e.response.data.message);

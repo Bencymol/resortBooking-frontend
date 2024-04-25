@@ -1,0 +1,157 @@
+/* colors*/
+
+:root {
+  --PrimaryColor: hsl(26, 93%, 50%);
+  --HoverColor: hsl(26, 90%, 42%);
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(0, 0%, 18%);
+  --textColor: hsl(240, 1%, 48%);
+  --whiteColoreDeam: hsl(0, 0%, 93%);
+  --greyBg: hsl(0, 0%, 96%);
+  --greyText: rgb(199, 190, 190);
+  --inputColor: hsl(330, 12%, 97%);
+  /* box-shadow: 0 2px 8px 2px rgba(178,178,178,0.45); */
+}
+.offerPage {
+  height: 100vh;
+  width: 100vw;
+  .nav-div {
+    background: var(--blackColor);
+    height: 80px;
+  }
+  .image-div {
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(
+        rgba(33, 33, 33, 0.522),
+        rgba(33, 33, 33, 0.522)
+      ),
+      url("../../assets/stay1.jpg");
+    background-position: center;
+    background-size: cover;
+    object-fit: fill;
+    background-repeat: no-repeat;
+    position: relative;
+    .homeText {
+      text-align: center;
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      .title {
+        color: var(--whiteColor);
+        font-size: 2.5rem;
+        font-weight: 700;
+        line-height: 5rem;
+        text-align: center;
+      }
+      .hash {
+        color: var(--whiteColor);
+        font-size: 3rem;
+        font-weight: 700;
+        line-height: 5rem;
+        text-align: center;
+        font-style: italic;
+      }
+    }
+  }
+  .featuredOffer {
+    width: 100%;
+
+    .offerText {
+      color: var(--blackColor);
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 5rem;
+      margin-left: 5%;
+    }
+    p {
+      color: var(--textColor);
+      margin-left: 5%;
+      line-height: 3rem;
+      font-size: 1.5rem;
+    }
+    .videoCardOffer {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      width: 100%;
+      height: 350px;
+      background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.73),
+          rgba(0, 0, 0, 0.609)
+        ),
+        url(/src/assets/map.jpg);
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      video {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+    .mainContent {
+      gap: 1rem;
+      padding: 20px;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      .singleOffer {
+        border-radius: 1rem;
+        overflow: hidden;
+        padding: 0.5rem;
+        box-shadow: 0 2px 8px 2px rgba(178, 178, 178, 0.189);
+
+        .icon {
+          font-size: 20px;
+          color: var(--whiteColor);
+        }
+        .btn {
+          color: var(--whiteColor);
+          margin-top: 5px;
+        }
+        .offerDesc {
+          color: var(--textColor);
+          line-height: 1.5rem;
+          font-size: 1rem;
+          margin: 0px;
+        }
+      }
+    }
+  }
+  .memberOffer {
+    margin-left: 5%;
+    margin-top: 25px;
+    .offerText {
+      color: var(--blackColor);
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 5rem;
+    }
+    p {
+      color: var(--textColor);
+
+      line-height: 2.5rem;
+      font-size: 1.5rem;
+    }
+    .singleMemOffer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      .offOne {
+        width: 40%;
+      }
+      h4 {
+        line-height: 1.5rem;
+        font-weight: 500;
+      }
+      small {
+        color: var(--textColor);
+      }
+    }
+  }
+}

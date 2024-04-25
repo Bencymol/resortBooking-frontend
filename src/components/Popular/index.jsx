@@ -2,8 +2,14 @@ import { BsArrowLeftShort, BsDot } from "react-icons/bs";
 import { BsArrowRightShort } from "react-icons/bs";
 import "./popular.scss";
 import img from "../../assets/img1.jpg";
+import { useEffect, useState } from "react";
+import axios from "../../utils/axios";
+import { useNavigate } from "react-router-dom";
 
 const Popular = () => {
+  const [resortData, setResortData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
   const data = [
     {
       id: 1,
@@ -34,6 +40,21 @@ const Popular = () => {
       grade: "Luxury Resort",
     },
   ];
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("resort/");
+      console.log("API Response:", response.data); // Log the response data
+      setResortData(response.data.resort); // Set the data state
+      setLoading(false);
+      console.log(resortData);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <section className="popular section container">
       <div className="secContainer">
@@ -45,27 +66,28 @@ const Popular = () => {
               in the world!
             </p>
           </div>
-          <div className="iconDiv flex">
-            <BsArrowLeftShort className="icon leftIcon" />
-            <BsArrowRightShort className="icon" />
-          </div>
         </div>
 
         <div className="mainContent grid">
-          {data.map(item => {
+          {resortData.map((item, index) => {
             return (
               <div className="singleDestination">
                 <div className="destImage">
-                  <img src={item.imgSrc} alt="Image Title" />
+                  <img src={item.images[0]} alt="Image Title" />
                   <div className="overlayInfo">
-                    <h3>{item.destTitle}</h3>
+                    <h3>{item.name}</h3>
                     <p>{item.location}</p>
-                    <BsArrowRightShort className="icon" />
+                    <BsArrowRightShort
+                      className="icon"
+                      onClick={() => {
+                        navigate(`/resort-details/${item._id}`);
+                      }}
+                    />
                   </div>
                 </div>
 
                 <div className="destFooter">
-                  <div className="number">0{item.id}</div>
+                  <div className="number">0{index}</div>
                   <div className="destText flex">
                     <h6>{item.location}</h6>
                     <span className="flex">

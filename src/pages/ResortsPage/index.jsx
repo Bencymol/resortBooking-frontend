@@ -58,14 +58,11 @@ const ResortsPage = () => {
           <>
             {data.map((item, index) => {
               return (
-                <div
-                  className="singleDestination"
-                  key={index}
-                  onClick={() => {
-                    navigate(`/resort-details/${item._id}`);
-                  }}
-                >
-                  <h2>{item.name}</h2>
+                <div className="singleDestination" key={index}>
+                  <h2>
+                    <a href=""></a>
+                    {item.name}
+                  </h2>
                   <div className="destImage">
                     <img
                       src={item.images[selectedIndex]}
@@ -87,6 +84,16 @@ const ResortsPage = () => {
                   <div className="location flex">
                     <MdLocationOn className="locIcon" />
                     <small> {item.location}</small>
+                  </div>
+                  <div className="btnDiv">
+                    <button
+                      className="btn moreBtn"
+                      onClick={() => {
+                        navigate(`/resort-details/${item._id}`);
+                      }}
+                    >
+                      More...
+                    </button>
                   </div>
                 </div>
               );

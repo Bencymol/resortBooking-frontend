@@ -8,7 +8,11 @@ import UserHome from "./pages/UserHome";
 import Login from "./pages/Login";
 import UserProfile from "./pages/UserProfile";
 import ResortDetails from "./pages/ResortDetails";
+import SampleBookBtn from "./pages/SampleBookBtn";
+import OfferPage from "./pages/OfferPage";
+import TermsOfUse from "./pages/TermsOfUse";
 import "./App.css";
+import AdminHome from "./pages/AdminHome";
 
 const App = () => {
   return (
@@ -21,6 +25,9 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/user/profile" element={<UserProfile />} />
         <Route path="/resort-details/:id" element={<ResortDetails />} />
+        <Route path="/offers" element={<OfferPage />} />
+        <Route path="/terms-of-use" element={<TermsOfUse />} />
+        <Route path="/admin-home" element={<AdminHome />} />
       </Routes>
     </div>
   );

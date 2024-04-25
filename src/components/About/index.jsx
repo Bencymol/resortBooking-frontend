@@ -41,10 +41,14 @@ const About = () => {
             <div className="cardText">
               <h2>Wonderful nature experience there!</h2>
               <p>
-                &Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Repellendus fugiat cum repudiandae rem. Perferendis
-                necessitatibus, quisquam dolores blanditiis optio animi tempora
-                sunt porro esse quam voluptate delectus non. Dolorem, amet.
+                Escape the hustle and bustle of everyday life and embark on a
+                journey of tranquility and rejuvenation amidst the pristine
+                beauty of nature at RiverRover. Nestled in the heart of
+                Alappuzha, our resort offers a truly enchanting experience where
+                you can reconnect with the natural world in all its splendor. As
+                you step foot onto our grounds, you'll be greeted by the
+                soothing melodies of chirping birds and the gentle rustle of
+                leaves in the breeze.
               </p>
             </div>
 

@@ -89,6 +89,7 @@ const Navbar = () => {
   }, []);
 
   const name = localStorage.getItem("name");
+  const role = localStorage.getItem("role");
 
   return (
     <section className="navBarSection">
@@ -110,22 +111,13 @@ const Navbar = () => {
               </a>
             </li>
             <li className="navItem">
-              <a href="#" className="navLink">
-                Locations
-              </a>
-            </li>
-            <li className="navItem">
-              <a href="#" className="navLink">
+              <a href="/offers" className="navLink">
                 Offers
               </a>
             </li>
+
             <li className="navItem">
-              <a href="#" className="navLink">
-                About
-              </a>
-            </li>
-            <li className="navItem">
-              <a href="#" className="navLink">
+              <a href="#footer" className="navLink">
                 Contact
               </a>
             </li>
@@ -146,13 +138,29 @@ const Navbar = () => {
                 )}
               </div>
             )}
-            {isLoggedIn && (
+            {isLoggedIn && role === "USER" && (
               <div className="headerBtns flex">
                 <button
                   className="btn loginBtn"
                   id="profileBtn"
                   onClick={() => {
                     navigate("/user/profile");
+                  }}
+                >
+                  <a href="#">{name}</a>
+                </button>
+                <button className="btn " id="logoutBtn" onClick={handleLogout}>
+                  <a>Logout</a>
+                </button>
+              </div>
+            )}
+            {isLoggedIn && role === "ADMIN" && (
+              <div className="headerBtns flex">
+                <button
+                  className="btn loginBtn"
+                  id="profileBtn"
+                  onClick={() => {
+                    navigate("/admin-home");
                   }}
                 >
                   <a href="#">{name}</a>

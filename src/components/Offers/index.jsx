@@ -7,62 +7,44 @@ import {
 import { FaWifi } from "react-icons/fa";
 import { BsArrowRightShort } from "react-icons/bs";
 import "./offers.scss";
+import { useEffect, useState } from "react";
+import axios from "../../utils/axios";
+import { useNavigate } from "react-router-dom";
 
 const Offers = () => {
-  const offers = [
-    {
-      id: 1,
-      imgSrc: "src/assets/img1.jpg",
-      destTitle: "RiverRover Goa",
-      location: "Goa",
-      grade: "Beach Resort",
-    },
-    {
-      id: 2,
-      imgSrc: "src/assets/img2.jpg",
-      destTitle: "RiverRover Kerala",
-      location: "Kerala",
-      grade: "Cultural Resort",
-    },
-    {
-      id: 3,
-      imgSrc: "src/assets/img3.jpg",
-      destTitle: "RiverRover Chennai",
-      location: "Chennai",
-      grade: "Luxury Resort",
-    },
-    {
-      id: 4,
-      imgSrc: "src/assets/img4.jpg",
-      destTitle: "RiverRover Mumbai",
-      location: "Mumbai",
-      grade: "Luxury Resort",
-    },
-  ];
+  const [resorts, setResorts] = useState([]);
+  const navigate = useNavigate();
+  const fetchData = async () => {
+    const response = await axios.get("/resort");
+    setResorts(response.data.resort);
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+  console.log("resorts", resorts);
   return (
     <section className="offer container section">
       <div className="secContainer">
         <div className="secIntro">
           <h2 className="secTitle">Special Offers</h2>
           <p>
-            &Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque non
-            fugiat laboriosam fugit placeat a. Amet aliquid illo beatae unde
-            dicta aspernatur voluptate laboriosam, accusamus ducimus laborum
-            minima nobis! Voluptates?
+            Enjoy up to 30% off your bill when you dine with us at participating
+            restaurants at RiverRover Hotels & Resorts across the Middle East,
+            India and Africa. Plus, earn 250 RR Rewards points for every $25 you
+            spend.
           </p>
         </div>
 
         <div className="mainContent grid">
-          {offers.map(item => {
+          {resorts.map(item => {
             return (
               <div className="singleOffer">
                 <div className="destImage">
-                  <img src={item.imgSrc} alt={item.destTitle} />
-                  <span className="discount">30% off</span>
+                  <img src={item.images[0]} alt={item.name} />
+                  <span className="discount">Up to 30% off</span>
                 </div>
                 <div className="offerBody">
                   <div className="price flex">
-                    <h4>{item.price}</h4>
                     <span className="status">For rent</span>
                   </div>
                   <div className="amenities flex">
@@ -76,18 +58,23 @@ const Offers = () => {
                     </div>
                     <div className="singleAmenity flex">
                       <FaWifi className="icon" />
-                      <small>WIFI</small>
+                      <small>{item.network}</small>
                     </div>
                     <div className="singleAmenity flex">
                       <MdAirportShuttle className="icon" />
-                      <small>Airport Shuttle</small>
+                      <small>{item.transportation}</small>
                     </div>
                   </div>
                   <div className="location flex">
                     <MdLocationOn className="icon" />
-                    <small>450 panaji,{item.location}</small>
+                    <small>{item.location}</small>
                   </div>
-                  <button className="btn flex">
+                  <button
+                    className="btn flex"
+                    onClick={() => {
+                      navigate("/offers");
+                    }}
+                  >
                     View Details
                     <BsArrowRightShort className="icon" />
                   </button>

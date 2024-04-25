@@ -30,13 +30,15 @@ const Footer = () => {
             <a href="#">Home</a>
           </li>
           <li>
-            <a href="#">Explore</a>
+            <a href="/resort-list">Explore</a>
           </li>
           <li>
-            <a href="#">About</a>
+            <a href="/offers">Offers</a>
           </li>
           <li>
-            <a href="#">Terms & Conditions</a>
+            <a href="terms-of-use" target="_blank">
+              Terms & Conditions
+            </a>
           </li>
         </div>
 
