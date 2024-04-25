@@ -12,6 +12,7 @@ const ResortsPage = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedImages, setSelectedImages] = useState({});
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -31,17 +32,23 @@ const ResortsPage = () => {
     fetchData();
   }, []);
 
-  const nextImage = arrlength => {
-    console.log(arrlength);
+  const nextImage = (itemId, arrlength) => {
     if (arrlength > 0) {
-      setSelectedIndex(selectedIndex < arrlength - 1 ? selectedIndex + 1 : 0);
+      setSelectedImages(prevImages => ({
+        ...prevImages,
+        [itemId]:
+          prevImages[itemId] < arrlength - 1 ? prevImages[itemId] + 1 : 0,
+      }));
     }
-    console.log(selectedIndex);
   };
 
-  const prevImage = arrlength => {
+  const prevImage = (itemId, arrlength) => {
     if (arrlength > 0) {
-      setSelectedIndex(selectedIndex > 0 ? selectedIndex - 1 : arrlength - 1);
+      setSelectedImages(prevImages => ({
+        ...prevImages,
+        [itemId]:
+          prevImages[itemId] > 0 ? prevImages[itemId] - 1 : arrlength - 1,
+      }));
     }
   };
 
@@ -65,19 +72,19 @@ const ResortsPage = () => {
                   </h2>
                   <div className="destImage">
                     <img
-                      src={item.images[selectedIndex]}
-                      alt={`Image ${selectedIndex}`}
+                      src={item.images[selectedImages[item._id] || 0]}
+                      alt={`Image ${selectedImages[item._id] || 0}`}
                     />
                   </div>
                   <div className="image-navigation iconDiv flex">
                     <BsArrowLeftShort
                       className="icon leftIcon"
-                      onClick={() => prevImage(item.images.length)}
+                      onClick={() => prevImage(item._id, item.images.length)}
                     />
 
                     <BsArrowRightShort
                       className="icon"
-                      onClick={() => nextImage(item.images.length)}
+                      onClick={() => nextImage(item._id, item.images.length)}
                     />
                   </div>
                   <p>{item.description}</p>

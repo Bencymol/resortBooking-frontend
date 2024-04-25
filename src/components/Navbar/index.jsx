@@ -96,7 +96,12 @@ const Navbar = () => {
       <div className={transparent}>
         <div className="logoDiv">
           <a href="#" className="logo">
-            <h1 className="flex">
+            <h1
+              className="flex"
+              onClick={() => {
+                navigate("/");
+              }}
+            >
               <SiYourtraveldottv className="icon" />
               ResortRover
             </h1>

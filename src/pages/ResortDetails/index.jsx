@@ -23,6 +23,7 @@ const ResortDetails = () => {
   const [amenity, setAmenity] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedImages, setSelectedImages] = useState({});
   const [open, setOpen] = useState(false);
   const [bookingData, setBookingData] = useState(null);
   const navigate = useNavigate();
@@ -48,17 +49,23 @@ const ResortDetails = () => {
     fetchData();
   }, []);
 
-  const nextImage = arrlength => {
-    console.log(arrlength);
+  const nextImage = (itemId, arrlength) => {
     if (arrlength > 0) {
-      setSelectedIndex(selectedIndex < arrlength - 1 ? selectedIndex + 1 : 0);
+      setSelectedImages(prevImages => ({
+        ...prevImages,
+        [itemId]:
+          prevImages[itemId] < arrlength - 1 ? prevImages[itemId] + 1 : 0,
+      }));
     }
-    console.log(selectedIndex);
   };
 
-  const prevImage = arrlength => {
+  const prevImage = (itemId, arrlength) => {
     if (arrlength > 0) {
-      setSelectedIndex(selectedIndex > 0 ? selectedIndex - 1 : arrlength - 1);
+      setSelectedImages(prevImages => ({
+        ...prevImages,
+        [itemId]:
+          prevImages[itemId] > 0 ? prevImages[itemId] - 1 : arrlength - 1,
+      }));
     }
   };
 
@@ -117,19 +124,19 @@ const ResortDetails = () => {
                   <h2>{item.name}</h2>
                   <div className="destImage">
                     <img
-                      src={item.image[selectedIndex]}
-                      alt={`Image ${selectedIndex}`}
+                      src={item.image[selectedImages[item._id] || 0]}
+                      alt={`Image ${selectedImages[item._id] || 0}`}
                     />
                   </div>
                   <div className="image-navigation iconDiv flex">
                     <BsArrowLeftShort
                       className="icon leftIcon"
-                      onClick={() => prevImage(item.image.length)}
+                      onClick={() => prevImage(item._id, item.image.length)}
                     />
 
                     <BsArrowRightShort
                       className="icon"
-                      onClick={() => nextImage(item.image.length)}
+                      onClick={() => nextImage(item._id, item.image.length)}
                     />
                   </div>
                   <div className="grid">

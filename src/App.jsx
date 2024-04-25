@@ -8,7 +8,6 @@ import UserHome from "./pages/UserHome";
 import Login from "./pages/Login";
 import UserProfile from "./pages/UserProfile";
 import ResortDetails from "./pages/ResortDetails";
-import SampleBookBtn from "./pages/SampleBookBtn";
 import OfferPage from "./pages/OfferPage";
 import TermsOfUse from "./pages/TermsOfUse";
 import "./App.css";
