@@ -3,7 +3,7 @@ import axios from "axios";
 const CustomAxios = axios.create({
   baseURL: "http://localhost:8080/",
   headers: {
-    Authorization: `Bearer ${localStorage.getItem("token")}`,
+    authorization: `Bearer ${localStorage.getItem("token")}`,
   },
 });
 

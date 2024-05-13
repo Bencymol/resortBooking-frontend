@@ -12,6 +12,9 @@ import OfferPage from "./pages/OfferPage";
 import TermsOfUse from "./pages/TermsOfUse";
 import "./App.css";
 import AdminHome from "./pages/AdminHome";
+import AddResort from "./pages/AddResort";
+import AddAmenity from "./pages/AddAmenity";
+import AddOffer from "./pages/AddOffer";
 
 const App = () => {
   return (
@@ -27,6 +30,9 @@ const App = () => {
         <Route path="/offers" element={<OfferPage />} />
         <Route path="/terms-of-use" element={<TermsOfUse />} />
         <Route path="/admin-home" element={<AdminHome />} />
+        <Route path="/add-resort" element={<AddResort />} />
+        <Route path="/add-amenity" element={<AddAmenity />} />
+        <Route path="/add-offer" element={<AddOffer />} />
       </Routes>
     </div>
   );

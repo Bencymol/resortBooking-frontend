@@ -3,46 +3,73 @@ import axios from "../../utils/axios";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import { toast, ToastContainer } from "react-toastify";
+import DeleteResortPopUp from "../../components/DeleteResortPopUp";
+import { useNavigate } from "react-router-dom";
+import DeleteOffer from "../../components/DeleteOffer";
 
 import "react-toastify/dist/ReactToastify.css";
 import "./adminhome.scss";
 
 const AdminHome = () => {
   const [admin, setAdmin] = useState([]);
-  const id = localStorage.getItem("id");
+  // const id = localStorage.getItem("id");
   const [open, setOpen] = useState(false);
-  const getAdmin = async () => {
-    const response = await axios.get(`admin/${id}`);
-    setAdmin(response.data.admin);
-  };
-  const handleClickOpen = aminity => {
+  const [openOffer, setOpenOffer] = useState(false);
+  const navigate = useNavigate();
+
+  const handleClickOpen = () => {
     setOpen(true);
+  };
+
+  const handleDeletePopoUpOpen = () => {
+    setOpenOffer(true);
   };
 
   const handleClose = () => {
     setOpen(false);
   };
 
-  const handleSubmit = async data => {
-    if (localStorage.getItem("id")) {
+  const handleOfferClose = () => {
+    setOpenOffer(false);
+  };
+
+  const handleOfferSubmit = response => {
+    if (response.data) {
       try {
-        // const bookingResponse = await axios.post("/book", resortBooking);
-        // toast.info(bookingResponse.data.message);
+        toast.success("Offer deleted");
       } catch (e) {
-        toast.error("Unable to book now. please try again.");
+        toast.error("Unable to delete now. please try again.");
       }
     } else {
-      toast.info("Please login for booking!");
+      toast.info("Please try again!");
     }
   };
 
+  const handleSubmit = response => {
+    if (response.data) {
+      try {
+        toast.success("Resort deleted");
+      } catch (e) {
+        toast.error("Unable to delete now. please try again.");
+      }
+    } else {
+      toast.info("Please try again!");
+    }
+  };
+
+  const handleDelete = () => {};
+
   useEffect(() => {
-    const userId = localStorage.getItem("id");
-    getAdmin();
+    const id = localStorage.getItem("id");
+    const getAdmin = async () => {
+      const response = await axios.get(`admin/${id}`);
+      setAdmin(response.data.admin);
+    };
   }, []);
   console.log(admin);
   return (
     <div className="adminHome">
+      <ToastContainer />
       <div className="nav-div">
         <Navbar />
       </div>
@@ -50,30 +77,41 @@ const AdminHome = () => {
         <div className="greet">
           <h1>Hello {localStorage.getItem("name")},</h1>
         </div>
-        <div className="adminOps">
-          <a href="#" onClick={() => handleClickOpen(item._id)}>
-            Add resort
-          </a>
+        <div
+          className="adminOps"
+          onClick={() => {
+            navigate("/add-resort");
+          }}
+        >
+          <h3>Add resort</h3>
         </div>
-        <div className="adminOps">
-          <a href="#">Delete resort</a>
+        <div className="adminOps" onClick={handleClickOpen}>
+          <h3>Delete resort</h3>
         </div>
-        <div className="adminOps">
-          <a href="#">Add Aimenity</a>
+        <div
+          className="adminOps"
+          onClick={() => {
+            navigate("/add-amenity");
+          }}
+        >
+          <h3>Add Aimenity</h3>
         </div>
-        <div className="adminOps">
-          <a href="#">Delete Aimenity</a>
+
+        <div
+          className="adminOps"
+          onClick={() => {
+            navigate("/add-offer");
+          }}
+        >
+          <h3>Add Offer</h3>
         </div>
-        <div className="adminOps">
-          <a href="#">Add Offer</a>
-        </div>
-        <div className="adminOps">
-          <a href="#">Delete Offer</a>
+        <div className="adminOps" onClick={handleDeletePopoUpOpen}>
+          <h3>Delete Offer</h3>
         </div>
       </div>
       <div className="bookingModel">
         {open && ( // Ensure conditional rendering
-          <PopupForm
+          <DeleteResortPopUp
             open={open}
             onClose={handleClose}
             onSubmit={handleSubmit}
@@ -81,7 +119,17 @@ const AdminHome = () => {
           />
         )}
       </div>
-      <ToastContainer />
+      <div className="offerModel">
+        {openOffer && ( // Ensure conditional rendering
+          <DeleteOffer
+            open={openOffer}
+            onClose={handleOfferClose}
+            onSubmit={handleOfferSubmit}
+            className={openOffer ? "active" : ""}
+          />
+        )}
+      </div>
+
       <Footer />
     </div>
   );
