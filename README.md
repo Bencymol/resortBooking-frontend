@@ -2,12 +2,16 @@
 The main purpose of this project is to implement a resort booking website with react functional components, hooks, redux and REST API requests, so I create  a mini resort booking website. 
 There are two logins, user and Admin through the same login page.
 
- Checkout,Payment gateway and booking cancellation are future advancement of this project.
+Checkout,Payment gateway and booking cancellation are future advancement of this project.
 
+ * Backend code: https://github.com/Bencymol/ResortBooking-backend
+ 
 ## User 
  User can signup and login to the wedsite. User will be able to explore all the resorts and amenities, for booking user must be loggedIn.
 ## Admin 
 Admin can login to the website with credentials that are already saved in database. Admin will be redirected to admin home page and can done managemnt operations like add and delete resorts rooms and offers.
+
+
 
 ## What I learned from this project
 
